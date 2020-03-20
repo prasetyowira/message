@@ -7,7 +7,7 @@ import (
 	"go.opencensus.io/stats/view"
 	"go.opencensus.io/trace"
 
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo"
+	"github.com/prasetyowira/message/internal/app/mga/todo"
 )
 
 // Middleware describes a service middleware.

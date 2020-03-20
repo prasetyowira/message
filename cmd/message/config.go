@@ -10,10 +10,10 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"github.com/sagikazarmark/modern-go-application/internal/platform/database"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/log"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/opencensus"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/watermill"
+	"github.com/prasetyowira/message/internal/platform/database"
+	"github.com/prasetyowira/message/internal/platform/log"
+	"github.com/prasetyowira/message/internal/platform/opencensus"
+	"github.com/prasetyowira/message/internal/platform/watermill"
 )
 
 // configuration holds any kind of configuration that comes from the outside world and

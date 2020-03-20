@@ -9,8 +9,8 @@ import (
 	"github.com/facebookincubator/ent/dialect/sql"
 	"github.com/facebookincubator/ent/dialect/sql/sqlgraph"
 	"github.com/facebookincubator/ent/schema/field"
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/todoadapter/ent/predicate"
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/todoadapter/ent/todo"
+	"github.com/prasetyowira/message/internal/app/mga/todo/todoadapter/ent/predicate"
+	"github.com/prasetyowira/message/internal/app/mga/todo/todoadapter/ent/todo"
 )
 
 // TodoUpdate is the builder for updating Todo entities.

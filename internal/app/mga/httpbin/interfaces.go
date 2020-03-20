@@ -1,7 +1,7 @@
 package httpbin
 
 import (
-	"github.com/sagikazarmark/modern-go-application/internal/common"
+	"github.com/prasetyowira/message/internal/common"
 )
 
 // These interfaces are aliased so that the module code is separated from the rest of the application.

@@ -1,4 +1,4 @@
-module github.com/sagikazarmark/modern-go-application
+module github.com/prasetyowira/message
 
 go 1.14
 

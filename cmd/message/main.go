@@ -39,15 +39,15 @@ import (
 	"google.golang.org/grpc"
 	"logur.dev/logur"
 
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga"
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/tododriver"
-	"github.com/sagikazarmark/modern-go-application/internal/common/commonadapter"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/appkit"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/buildinfo"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/database"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/gosundheit"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/log"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/watermill"
+	"github.com/prasetyowira/message/internal/app/mga"
+	"github.com/prasetyowira/message/internal/app/mga/todo/tododriver"
+	"github.com/prasetyowira/message/internal/common/commonadapter"
+	"github.com/prasetyowira/message/internal/platform/appkit"
+	"github.com/prasetyowira/message/internal/platform/buildinfo"
+	"github.com/prasetyowira/message/internal/platform/database"
+	"github.com/prasetyowira/message/internal/platform/gosundheit"
+	"github.com/prasetyowira/message/internal/platform/log"
+	"github.com/prasetyowira/message/internal/platform/watermill"
 )
 
 // Provisioned by ldflags

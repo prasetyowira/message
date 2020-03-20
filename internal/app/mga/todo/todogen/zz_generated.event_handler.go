@@ -8,7 +8,7 @@ import (
 	"context"
 	"emperror.dev/errors"
 	"fmt"
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo"
+	"github.com/prasetyowira/message/internal/app/mga/todo"
 )
 
 // MarkedAsDoneHandler handles MarkedAsDone events.
