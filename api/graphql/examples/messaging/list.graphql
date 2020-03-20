@@ -1,7 +1,6 @@
 {
-    todos {
+    messages {
         id
         text
-        done
     }
 }

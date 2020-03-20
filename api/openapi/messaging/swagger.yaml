@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
-    title: "Todo API"
-    description: "Manage TODOs"
+    title: "Messaging API"
+    description: "Manage Messages"
     version: "1.0.0"
-host: "todo.api"
+host: "messaging.api"
 basePath: "/"
 schemes:
     - "https"
@@ -16,11 +16,11 @@ securityDefinitions:
         in: "header"
 
 paths:
-    /todos:
+    /message:
         post:
-            summary: "Add a new TODO to the list"
+            summary: "Add a new Message to the list"
             description: ""
-            operationId: "createTodo"
+            operationId: "createMessage"
             consumes:
                 - "application/json"
             produces:
@@ -31,12 +31,12 @@ paths:
                     in: "body"
                     required: true
                     schema:
-                        $ref: "#/definitions/CreateTodoRequest"
+                        $ref: "#/definitions/CreateMessageRequest"
             responses:
                 200:
                     description: "successful operation"
                     schema:
-                        $ref: "#/definitions/CreateTodoResponse"
+                        $ref: "#/definitions/CreateMessageResponse"
                 400:
                     description: "invalid request"
                     schema:
@@ -47,9 +47,9 @@ paths:
                         $ref: "#/definitions/GenericError"
 
         get:
-            summary: "List TODOs"
+            summary: "List Messages"
             description: ""
-            operationId: "listTodos"
+            operationId: "listMessages"
             consumes:
                 - "application/json"
             produces:
@@ -58,17 +58,17 @@ paths:
                 201:
                     description: "created"
                     schema:
-                        $ref: "#/definitions/TodoList"
+                        $ref: "#/definitions/MessageList"
                 500:
                     description: "unexpected error"
                     schema:
                         $ref: "#/definitions/GenericError"
 
-    /todos/{id}/done:
-        patch:
-            summary: "Mark a TODO as done"
+    /message/{id}:
+        get:
+            summary: "Get Message by ID"
             description: ""
-            operationId: "markAsDone"
+            operationId: "getMessage"
             parameters:
                 -
                     in: path
@@ -84,7 +84,7 @@ paths:
                 200:
                     description: "successful operation"
                     schema:
-                        $ref: "#/definitions/CreateTodoResponse"
+                        $ref: "#/definitions/Message"
                 404:
                     description: "not found"
                     schema:
@@ -95,29 +95,26 @@ paths:
                         $ref: "#/definitions/GenericError"
 
 definitions:
-    Todo:
+    Message:
         type: "object"
         properties:
             id:
                 type: "string"
             text:
                 type: "string"
-            done:
-                type: "boolean"
         required:
             - id
             - text
-            - done
 
-    TodoList:
+    MessageList:
         type: "object"
         properties:
             todos:
                 type: "array"
                 items:
-                    $ref: '#/definitions/Todo'
+                    $ref: '#/definitions/Message'
 
-    CreateTodoRequest:
+    CreateMessageRequest:
         type: "object"
         properties:
             text:
@@ -125,7 +122,7 @@ definitions:
         required:
             - text
 
-    CreateTodoResponse:
+    CreateMessageResponse:
         type: "object"
         properties:
             id:

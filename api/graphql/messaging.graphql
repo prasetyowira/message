@@ -1,18 +1,17 @@
-type Todo {
+type Message {
     id: ID!
     text: String!
-    done: Boolean!
 }
 
 type Query {
-    todos: [Todo!]!
+    messages: [Message!]!
+    message(input: ID!): Message!
 }
 
-input NewTodo {
+input NewMessage {
     text: String!
 }
 
 type Mutation {
-    createTodo(input: NewTodo!): ID!
-    markTodoAsDone(input: ID!): Boolean!
+    createMessage(input: NewMessage!): ID!
 }
