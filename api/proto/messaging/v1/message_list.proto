@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package messaging.v1;
+
+option csharp_namespace = "Messaging.V1";
+option go_package = "messagingv1";
+option java_multiple_files = true;
+option java_outer_classname = "MessageListProto";
+option java_package = "com.messaging.v1";
+option objc_class_prefix = "TXX";
+option php_namespace = "Messaging\\V1";
+
+import "messaging/v1/message.proto";
+
+// MessageList manages a list of messages.
+service MessageList {
+  // CreateMessage adds a new message to the message list.
+  rpc CreateMessage(CreateMessageRequest) returns (CreateMessageResponse);
+  // ListMessages returns the list of messages.
+  rpc ListMessages(ListMessagesRequest) returns (ListMessagesResponse);
+  // GetMessage returns message by id
+  rpc GetMessage(GetMessageRequest) returns (GetMessageResponse);
+}
+
+message CreateMessageRequest {
+  string text = 1;
+}
+
+message CreateMessageResponse {
+  string id = 1;
+}
+
+message ListMessagesRequest {}
+
+message ListMessagesResponse {
+  repeated Message messages = 1;
+}
+
+message GetMessageRequest {
+  string id = 1;
+}
+
+message GetMessageResponse {
+  Message message = 1;
+}

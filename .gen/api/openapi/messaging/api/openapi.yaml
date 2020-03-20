@@ -1,0 +1,155 @@
+openapi: 3.0.1
+info:
+  description: Manage Messages
+  title: Messaging API
+  version: 1.0.0
+servers:
+- url: https://messaging.api/
+- url: http://messaging.api/
+paths:
+  /message:
+    get:
+      operationId: listMessages
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageList'
+          description: created
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: unexpected error
+      summary: List Messages
+    post:
+      operationId: createMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMessageResponse'
+          description: successful operation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: invalid request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: unexpected error
+      summary: Add a new Message to the list
+      x-codegen-request-body-name: body
+  /message/{id}:
+    get:
+      operationId: getMessage
+      parameters:
+      - description: Numeric ID of the TODO
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: successful operation
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: unexpected error
+      summary: Get Message by ID
+components:
+  schemas:
+    Message:
+      example:
+        id: id
+        text: text
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+      required:
+      - id
+      - text
+      type: object
+    MessageList:
+      example:
+        todos:
+        - id: id
+          text: text
+        - id: id
+          text: text
+      properties:
+        todos:
+          items:
+            $ref: '#/components/schemas/Message'
+          type: array
+      type: object
+    CreateMessageRequest:
+      example:
+        text: text
+      properties:
+        text:
+          type: string
+      required:
+      - text
+      type: object
+    CreateMessageResponse:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+    GenericError:
+      example:
+        type: about:blank
+        title: Not Found
+        status: 404
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+      required:
+      - type
+      type: object
+  securitySchemes:
+    api_key:
+      in: header
+      name: api_key
+      type: apiKey

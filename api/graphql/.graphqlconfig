@@ -1,5 +1,5 @@
 {
-    "name": "Modern Go Application GraphQL Schema",
+    "name": "Messaging Application GraphQL Schema",
     "schemaPath": "schema.graphql",
     "extensions": {
         "endpoints": {

@@ -39,4 +39,5 @@ require (
 	logur.dev/adapter/logrus v0.4.1
 	logur.dev/integration/watermill v0.4.2
 	logur.dev/logur v0.16.2
+	sagikazarmark.dev/mga v0.2.0 // indirect
 )

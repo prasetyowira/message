@@ -39,8 +39,7 @@ import (
 	"google.golang.org/grpc"
 	"logur.dev/logur"
 
-	"github.com/prasetyowira/message/internal/app/mga"
-	"github.com/prasetyowira/message/internal/app/mga/todo/tododriver"
+	"github.com/prasetyowira/message/internal/app/chat_app"
 	"github.com/prasetyowira/message/internal/common/commonadapter"
 	"github.com/prasetyowira/message/internal/platform/appkit"
 	"github.com/prasetyowira/message/internal/platform/buildinfo"
@@ -263,10 +262,6 @@ func main() {
 		ocgrpc.ServerSentBytesPerRPCView,
 		ocgrpc.ServerLatencyView,
 		ocgrpc.ServerCompletedRPCsView,
-
-		// Todo
-		tododriver.CreatedTodoCountView,
-		tododriver.DoneTodoCountView,
 	)
 	emperror.Panic(errors.Wrap(err, "failed to register stat views"))
 
@@ -308,12 +303,12 @@ func main() {
 				appkiterrors.IsServiceError, // filter out service errors
 			)
 
-			mga.InitializeApp(httpRouter, grpcServer, publisher, config.App.Storage, db, logger, errorHandler)
+			chat_app.InitializeApp(httpRouter, grpcServer, publisher, config.App.Storage, db, logger, errorHandler)
 
 			h, err := watermill.NewRouter(config.Watermill.RouterConfig, logger)
 			emperror.Panic(err)
 
-			err = mga.RegisterEventHandlers(h, subscriber, logger)
+			err = chat_app.RegisterEventHandlers(h, subscriber, logger)
 			emperror.Panic(err)
 
 			group.Add(func() error { return h.Run(context.Background()) }, func(e error) { _ = h.Close() })

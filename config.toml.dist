@@ -26,12 +26,12 @@ enabled = false
 httpAddr = ":8000"
 grpcAddr = ":8001"
 
-storage = "inmemory"
+storage = "database"
 
 [database]
 host = "localhost"
 port = 3306
 user = "root"
-pass = ""
-name = "app"
+pass = "root"
+name = "message_app"
 params = { collation = "utf8mb4_general_ci" }

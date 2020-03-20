@@ -239,7 +239,7 @@ buf: bin/buf ## Generate client and server stubs from the protobuf definition
 proto: bin/protoc bin/protoc-gen-go bin/protoc-gen-kit buf ## Generate client and server stubs from the protobuf definition
 	mkdir -p .gen/proto
 
-	protoc -I bin/protoc-${PROTOC_VERSION} -I api/proto --go_out=plugins=grpc,import_path=$(shell go list .):.gen/api/proto --kit_out=.gen/api/proto $(shell find api/proto -name '*.proto')
+	./bin/protoc-${PROTOC_VERSION}/bin/protoc -I bin/protoc-${PROTOC_VERSION} -I api/proto --go_out=plugins=grpc,import_path=$(shell go list .):.gen/api/proto --kit_out=.gen/api/proto $(shell find api/proto -name '*.proto')
 
 bin/gqlgen: go.mod
 	@mkdir -p bin
