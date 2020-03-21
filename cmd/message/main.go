@@ -272,6 +272,7 @@ func main() {
 
 		httpRouter := mux.NewRouter()
 		httpRouter.Use(ocmux.Middleware())
+		httpRouter.Use(AccessControl())
 
 		httpServer := &http.Server{
 			Handler: &ochttp.Handler{
@@ -336,4 +337,20 @@ func main() {
 
 	err = group.Run()
 	emperror.WithFilter(errorHandler, match.As(&run.SignalError{}).MatchError).Handle(err)
+}
+
+func AccessControl() mux.MiddlewareFunc {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "Origin, Content-Type")
+
+			if req.Method == "OPTIONS" {
+				return
+			}
+
+			next.ServeHTTP(w, req)
+		})
+	}
 }
