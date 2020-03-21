@@ -273,6 +273,7 @@ func main() {
 		httpRouter := mux.NewRouter()
 		httpRouter.Use(ocmux.Middleware())
 		httpRouter.Use(AccessControl())
+		httpRouter.Use(mux.CORSMethodMiddleware(httpRouter))
 
 		httpServer := &http.Server{
 			Handler: &ochttp.Handler{
@@ -342,13 +343,17 @@ func main() {
 func AccessControl() mux.MiddlewareFunc {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-			w.Header().Set("Access-Control-Allow-Origin", "*")
-			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-			w.Header().Set("Access-Control-Allow-Headers", "Origin, Content-Type")
-
-			if req.Method == "OPTIONS" {
+			if req.Method == http.MethodOptions {
+				w.Header().Set("Access-Control-Allow-Origin", "*")
+				w.Header().Set("Access-Control-Allow-Methods", "POST")
+				w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+				w.Header().Set("Access-Control-Max-Age", "3600")
+				w.WriteHeader(http.StatusNoContent)
 				return
 			}
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "*")
 
 			next.ServeHTTP(w, req)
 		})

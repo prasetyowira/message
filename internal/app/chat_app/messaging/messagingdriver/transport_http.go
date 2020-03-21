@@ -18,7 +18,7 @@ import (
 func RegisterHTTPHandlers(endpoints Endpoints, router *mux.Router, options ...kithttp.ServerOption) {
 	errorEncoder := kitxhttp.NewJSONProblemErrorResponseEncoder(appkithttp.NewDefaultProblemConverter())
 
-	router.Methods(http.MethodPost).Path("").Handler(kithttp.NewServer(
+	router.Methods(http.MethodPost, http.MethodOptions).Path("").Handler(kithttp.NewServer(
 		endpoints.CreateMessage,
 		decodeCreateMessageHTTPRequest,
 		kitxhttp.ErrorResponseEncoder(encodeCreateMessageHTTPResponse, errorEncoder),

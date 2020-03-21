@@ -5,9 +5,7 @@ info:
   version: 1.0.0
 servers:
 - url: http://localhost:8000/
-- url: http://dockerhost:8000/
-- url: https://messaging.api/
-- url: http://messaging.api/
+- url: https://localhost:8000/
 paths:
   /message:
     get:
@@ -35,12 +33,12 @@ paths:
               $ref: '#/components/schemas/CreateMessageRequest'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateMessageResponse'
-          description: successful operation
+          description: created
         "400":
           content:
             application/json:
@@ -59,12 +57,12 @@ paths:
     get:
       operationId: getMessage
       parameters:
-      - description: Numeric ID of the TODO
+      - description: UID of the Message
         in: path
         name: id
         required: true
         schema:
-          type: integer
+          type: string
       responses:
         "200":
           content:
