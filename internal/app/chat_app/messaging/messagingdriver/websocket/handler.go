@@ -18,25 +18,14 @@ const (
 	// Send pings to client with this period. Must be less than pongWait.
 	pingPeriod = (pongWait * 9) / 10
 
-	// Poll file for changes with this period.
-	messagePeriod = 3 * time.Second
-
 	MessagingTopic = "messaging"
 )
-
-var (
-	Upgrader  = gorillaWS.Upgrader{
-		ReadBufferSize:  1024,
-		WriteBufferSize: 1024,
-	}
-)
-
 
 func Reader(ws *gorillaWS.Conn) {
 	defer ws.Close()
 	ws.SetReadLimit(512)
 	_ = ws.SetReadDeadline(time.Now().Add(pongWait))
-	ws.SetPongHandler(func(string) error { ws.SetReadDeadline(time.Now().Add(pongWait)); return nil })
+	ws.SetPongHandler(func(string) error { _ = ws.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 	for {
 		_, _, err := ws.ReadMessage()
 		if err != nil {
@@ -51,17 +40,12 @@ func WriterPing(ws *gorillaWS.Conn) {
 	defer func() {
 		pingTicker.Stop()
 		_ = ws.Close()
-
 	}()
 
-	for {
-		select {
-		case <-pingTicker.C:
-			_ = ws.SetWriteDeadline(time.Now().Add(writeWait))
-			if err := ws.WriteMessage(gorillaWS.PingMessage, []byte{}); err != nil {
-				return
-			}
-		}
+	<-pingTicker.C
+	_ = ws.SetWriteDeadline(time.Now().Add(writeWait))
+	if err := ws.WriteMessage(gorillaWS.PingMessage, []byte{}); err != nil {
+		return
 	}
 }
 
@@ -80,4 +64,3 @@ func Writer(ws *gorillaWS.Conn, messages <-chan *watermillMessage.Message) {
 		msg.Ack()
 	}
 }
-

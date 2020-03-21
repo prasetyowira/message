@@ -14,7 +14,7 @@ func RegisterHTTPHandlers(router *mux.Router) {
 	router.Path("/websocket").Methods(http.MethodGet).Handler(WebsocketLanding())
 }
 
-// Landing is the landing page for Modern Go Application.
+// landing page.
 func Landing() http.Handler {
 	file, err := pkger.Open("/static/templates/landing.html")
 	if err != nil {
@@ -33,8 +33,7 @@ func Landing() http.Handler {
 	})
 }
 
-
-// Landing is the landing page for Modern Go Application.
+// WebsocketLanding is the sample websocket client.
 func WebsocketLanding() http.Handler {
 	file, err := pkger.Open("/static/templates/websocket.html")
 	if err != nil {

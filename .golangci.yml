@@ -18,8 +18,8 @@ linters:
         - maligned
         - wsl
         - gomnd
-
-        # Drives todos nuts
+        - gofmt
+        - goimports
         - godox
 
 service:

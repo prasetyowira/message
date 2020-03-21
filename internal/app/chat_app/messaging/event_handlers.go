@@ -21,8 +21,8 @@ func (h LogEventHandler) NewMessageSent(ctx context.Context, event MessageSent) 
 	logger := h.logger.WithContext(ctx)
 
 	logger.Info("message sent", map[string]interface{}{
-		"event":   "MessageSent",
-		"message_id": event.ID,
+		"event":	"MessageSent",
+		"message_id":	event.ID,
 	})
 
 	return nil

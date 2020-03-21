@@ -1,6 +1,5 @@
 package messagingadapter
 
-
 import (
 	"context"
 
@@ -15,7 +14,7 @@ type entStore struct {
 	client *ent.Client
 }
 
-// NewEntStore returns a new todo store backed by Ent ORM.
+// NewEntStore returns a new message store backed by Ent ORM.
 func NewEntStore(client *ent.Client) messaging.Store {
 	return entStore{
 		client: client,
@@ -78,4 +77,3 @@ func (s entStore) Get(ctx context.Context, id string) (messaging.Message, error)
 		Text: messageModel.Text,
 	}, nil
 }
-

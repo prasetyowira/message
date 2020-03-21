@@ -12,6 +12,14 @@ import (
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingdriver/websocket"
 )
 
+//nolint
+var (
+	upgrader = gorillaWS.Upgrader{
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
+	}
+)
+
 func RegisterWebSocketHandlers(router *mux.Router, subscriber message.Subscriber) {
 	router.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		ServeWS(w, r, subscriber)
@@ -19,7 +27,7 @@ func RegisterWebSocketHandlers(router *mux.Router, subscriber message.Subscriber
 }
 
 func ServeWS(w http.ResponseWriter, r *http.Request, subscriber message.Subscriber) {
-	ws, err := websocket.Upgrader.Upgrade(w, r, nil)
+	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		if _, ok := err.(gorillaWS.HandshakeError); !ok {
 			log.Println(err)

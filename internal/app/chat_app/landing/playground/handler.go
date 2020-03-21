@@ -17,6 +17,5 @@ func RegisterHTTPHandlers(router *mux.Router) {
 }
 
 func ServeHTTP() http.Handler {
-	return playground.Handler("Messaging Graphql", "/graphql", )
+	return playground.Handler("Messaging Graphql", "/graphql")
 }
-

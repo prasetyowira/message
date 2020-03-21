@@ -146,7 +146,11 @@ func (s service) CreateMessage(ctx context.Context, text string) (string, error)
 	}
 
 	err = s.store.Store(ctx, message)
+	if err != nil {
+		return "", err
+	}
 
+	//nolint
 	event := MessageSent{
 		ID: message.ID,
 		Text: message.Text,
