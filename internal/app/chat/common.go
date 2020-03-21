@@ -1,4 +1,4 @@
-package chat_app
+package chat
 
 import (
 	"github.com/prasetyowira/message/internal/common"

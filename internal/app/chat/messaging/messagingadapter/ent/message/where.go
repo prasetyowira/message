@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/facebookincubator/ent/dialect/sql"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/predicate"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/predicate"
 )
 
 // ID filters vertices based on their identifier.

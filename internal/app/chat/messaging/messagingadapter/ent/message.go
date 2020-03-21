@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/facebookincubator/ent/dialect/sql"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/message"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/message"
 )
 
 // Message is the model entity for the Message schema.

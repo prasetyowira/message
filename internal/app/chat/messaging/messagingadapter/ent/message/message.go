@@ -5,7 +5,7 @@ package message
 import (
 	"time"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/schema"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/schema"
 )
 
 const (

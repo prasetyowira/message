@@ -1,4 +1,4 @@
-package chat_app
+package chat
 
 import (
 	"context"
@@ -25,15 +25,15 @@ import (
 	watermilllog "logur.dev/integration/watermill"
 
 	messagingv1 "github.com/prasetyowira/message/.gen/api/proto/messaging/v1"
-	"github.com/prasetyowira/message/internal/app/chat_app/httpbin"
-	"github.com/prasetyowira/message/internal/app/chat_app/landing/landingdriver"
-	"github.com/prasetyowira/message/internal/app/chat_app/landing/playground"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/migrate"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingdriver"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messaginggen"
+	"github.com/prasetyowira/message/internal/app/chat/httpbin"
+	"github.com/prasetyowira/message/internal/app/chat/landing/landingdriver"
+	"github.com/prasetyowira/message/internal/app/chat/landing/playground"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/migrate"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingdriver"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messaginggen"
 )
 
 const messagingTopic = "messaging"

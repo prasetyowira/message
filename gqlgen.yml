@@ -13,4 +13,4 @@ struct_tag: json
 
 models:
     Message:
-        model: github.com/prasetyowira/message/internal/app/chat_app/messaging.Message
+        model: github.com/prasetyowira/message/internal/app/chat/messaging.Message

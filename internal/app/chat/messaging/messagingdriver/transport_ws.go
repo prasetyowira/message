@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 	gorillaWS "github.com/gorilla/websocket"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingdriver/websocket"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingdriver/websocket"
 )
 
 //nolint

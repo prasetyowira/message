@@ -39,7 +39,7 @@ import (
 	"google.golang.org/grpc"
 	"logur.dev/logur"
 
-	"github.com/prasetyowira/message/internal/app/chat_app"
+	"github.com/prasetyowira/message/internal/app/chat"
 	"github.com/prasetyowira/message/internal/common/commonadapter"
 	"github.com/prasetyowira/message/internal/platform/appkit"
 	"github.com/prasetyowira/message/internal/platform/buildinfo"
@@ -305,12 +305,12 @@ func main() {
 				appkiterrors.IsServiceError, // filter out service errors
 			)
 
-			chat_app.InitializeApp(httpRouter, grpcServer, publisher, subscriber, config.App.Storage, db, logger, errorHandler)
+			chat.InitializeApp(httpRouter, grpcServer, publisher, subscriber, config.App.Storage, db, logger, errorHandler)
 
 			h, err := watermill.NewRouter(config.Watermill.RouterConfig, logger)
 			emperror.Panic(err)
 
-			err = chat_app.RegisterEventHandlers(h, subscriber, logger)
+			err = chat.RegisterEventHandlers(h, subscriber, logger)
 			emperror.Panic(err)
 
 			group.Add(func() error { return h.Run(context.Background()) }, func(e error) { _ = h.Close() })

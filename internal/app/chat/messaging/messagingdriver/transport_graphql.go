@@ -9,7 +9,7 @@ import (
 	"github.com/go-kit/kit/endpoint"
 
 	"github.com/prasetyowira/message/.gen/api/graphql"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
 )
 
 // MakeGraphQLHandler mounts all of the service endpoints into a GraphQL handler.

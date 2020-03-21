@@ -8,7 +8,7 @@ import (
 	"logur.dev/logur"
 	"logur.dev/logur/logtesting"
 
-	. "github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	. "github.com/prasetyowira/message/internal/app/chat/messaging"
 	"github.com/prasetyowira/message/internal/common/commonadapter"
 )
 

@@ -15,7 +15,7 @@ import (
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
 )
 
 // region    ************************** generated!.gotpl **************************
@@ -434,7 +434,7 @@ func (ec *executionContext) _Query_messages(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*messaging.Message)
 	fc.Result = res
-	return ec.marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessageᚄ(ctx, field.Selections, res)
+	return ec.marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessageᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_message(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -475,7 +475,7 @@ func (ec *executionContext) _Query_message(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*messaging.Message)
 	fc.Result = res
-	return ec.marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessage(ctx, field.Selections, res)
+	return ec.marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessage(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2022,11 +2022,11 @@ func (ec *executionContext) marshalNID2string(ctx context.Context, sel ast.Selec
 	return res
 }
 
-func (ec *executionContext) marshalNMessage2githubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessage(ctx context.Context, sel ast.SelectionSet, v messaging.Message) graphql.Marshaler {
+func (ec *executionContext) marshalNMessage2githubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessage(ctx context.Context, sel ast.SelectionSet, v messaging.Message) graphql.Marshaler {
 	return ec._Message(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessageᚄ(ctx context.Context, sel ast.SelectionSet, v []*messaging.Message) graphql.Marshaler {
+func (ec *executionContext) marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessageᚄ(ctx context.Context, sel ast.SelectionSet, v []*messaging.Message) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -2050,7 +2050,7 @@ func (ec *executionContext) marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessage(ctx, sel, v[i])
+			ret[i] = ec.marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessage(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -2063,7 +2063,7 @@ func (ec *executionContext) marshalNMessage2ᚕᚖgithubᚗcomᚋprasetyowiraᚋ
 	return ret
 }
 
-func (ec *executionContext) marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchat_appᚋmessagingᚐMessage(ctx context.Context, sel ast.SelectionSet, v *messaging.Message) graphql.Marshaler {
+func (ec *executionContext) marshalNMessage2ᚖgithubᚗcomᚋprasetyowiraᚋmessageᚋinternalᚋappᚋchatᚋmessagingᚐMessage(ctx context.Context, sel ast.SelectionSet, v *messaging.Message) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")

@@ -8,7 +8,7 @@ import (
 	"context"
 	"errors"
 	"github.com/go-kit/kit/endpoint"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
 	kitxendpoint "github.com/sagikazarmark/kitx/endpoint"
 )
 

@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/facebookincubator/ent/dialect"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/migrate"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/migrate"
 )
 
 // Tx is a transactional client that is created by calling Client.Tx().

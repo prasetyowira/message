@@ -5,9 +5,9 @@ import (
 
 	"emperror.dev/errors"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent"
-	messagep "github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/message"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent"
+	messagep "github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/message"
 )
 
 type entStore struct {

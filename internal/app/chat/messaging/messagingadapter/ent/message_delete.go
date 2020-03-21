@@ -8,8 +8,8 @@ import (
 	"github.com/facebookincubator/ent/dialect/sql"
 	"github.com/facebookincubator/ent/dialect/sql/sqlgraph"
 	"github.com/facebookincubator/ent/schema/field"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/message"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/predicate"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/message"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/predicate"
 )
 
 // MessageDelete is the builder for deleting a Message entity.

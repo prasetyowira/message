@@ -10,7 +10,7 @@ import (
 
 	"github.com/facebookincubator/ent/dialect/sql/sqlgraph"
 	"github.com/facebookincubator/ent/schema/field"
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/message"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/message"
 )
 
 // MessageCreate is the builder for creating a Message entity.

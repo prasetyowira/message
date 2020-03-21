@@ -3,7 +3,7 @@ package messagingdriver
 import (
 	"context"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
 )
 
 // Middleware describes a service middleware.

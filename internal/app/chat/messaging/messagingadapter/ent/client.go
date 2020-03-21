@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/migrate"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/migrate"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent/message"
+	"github.com/prasetyowira/message/internal/app/chat/messaging/messagingadapter/ent/message"
 
 	"github.com/facebookincubator/ent/dialect"
 	"github.com/facebookincubator/ent/dialect/sql"

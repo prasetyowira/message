@@ -10,7 +10,7 @@ import (
 
 	"emperror.dev/errors"
 
-	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
+	"github.com/prasetyowira/message/internal/app/chat/messaging"
 )
 
 // MessageSentHandler handles MessageSent events.
