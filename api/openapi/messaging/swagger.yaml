@@ -109,7 +109,7 @@ definitions:
     MessageList:
         type: "object"
         properties:
-            todos:
+            messages:
                 type: "array"
                 items:
                     $ref: '#/definitions/Message'

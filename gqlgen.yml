@@ -12,5 +12,5 @@ model:
 struct_tag: json
 
 models:
-    Todo:
-        model: github.com/prasetyowira/message/internal/app/mga/todo.Todo
+    Message:
+        model: github.com/prasetyowira/message/internal/app/chat_app/messaging.Message

@@ -100,13 +100,13 @@ components:
       type: object
     MessageList:
       example:
-        todos:
+        messages:
         - id: id
           text: text
         - id: id
           text: text
       properties:
-        todos:
+        messages:
           items:
             $ref: '#/components/schemas/Message'
           type: array

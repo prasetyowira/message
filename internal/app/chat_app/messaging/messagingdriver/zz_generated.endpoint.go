@@ -50,7 +50,7 @@ type CreateMessageRequest struct {
 
 // CreateMessageResponse is a response struct for CreateMessage endpoint.
 type CreateMessageResponse struct {
-	Id  string
+	ID  string
 	Err error
 }
 
@@ -69,17 +69,17 @@ func MakeCreateMessageEndpoint(service messaging.Service) endpoint.Endpoint {
 			if serviceErr := serviceError(nil); errors.As(err, &serviceErr) && serviceErr.ServiceError() {
 				return CreateMessageResponse{
 					Err: err,
-					Id:  id,
+					ID:  id,
 				}, nil
 			}
 
 			return CreateMessageResponse{
 				Err: err,
-				Id:  id,
+				ID:  id,
 			}, err
 		}
 
-		return CreateMessageResponse{Id: id}, nil
+		return CreateMessageResponse{ID: id}, nil
 	}
 }
 

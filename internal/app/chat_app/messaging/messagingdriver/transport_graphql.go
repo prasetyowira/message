@@ -14,7 +14,7 @@ import (
 
 // MakeGraphQLHandler mounts all of the service endpoints into a GraphQL handler.
 func MakeGraphQLHandler(endpoints Endpoints, errorHandler messaging.ErrorHandler) http.Handler {
-	return handler.New(
+	srv := handler.NewDefaultServer(
 		graphql.NewExecutableSchema(graphql.Config{
 			Resolvers: &resolver{
 				endpoints:    endpoints,
@@ -22,6 +22,7 @@ func MakeGraphQLHandler(endpoints Endpoints, errorHandler messaging.ErrorHandler
 			},
 		}),
 	)
+	return srv
 }
 
 type resolver struct {
@@ -50,17 +51,17 @@ func (r *mutationResolver) CreateMessage(ctx context.Context, input graphql.NewM
 		return "", errors.New("internal server error")
 	}
 
-	if f, ok := resp.(endpoint.Failer); ok {
+	if f, ok := resp.(endpoint.Failer); !ok {
 		return "", f.Failed()
 	}
-
-	return resp.(CreateMessageResponse).Id, nil
+	id := resp.(CreateMessageResponse).ID
+	return id, nil
 }
 
 
 type queryResolver struct{ *resolver }
 
-func (r *queryResolver) Messages(ctx context.Context) ([]*graphql.Message, error) {
+func (r *queryResolver) Messages(ctx context.Context) ([]*messaging.Message, error) {
 	resp, err := r.endpoints.ListMessages(ctx, nil)
 	if err != nil {
 		r.errorHandler.HandleContext(ctx, err)
@@ -68,10 +69,10 @@ func (r *queryResolver) Messages(ctx context.Context) ([]*graphql.Message, error
 		return nil, errors.New("internal server error")
 	}
 
-	messages := make([]*graphql.Message, len(resp.(ListMessagesResponse).Messages))
+	messages := make([]*messaging.Message, len(resp.(ListMessagesResponse).Messages))
 
 	for i, message := range resp.(ListMessagesResponse).Messages {
-		messages[i] = &graphql.Message{
+		messages[i] = &messaging.Message{
 			ID: message.ID,
 			Text: message.Text,
 		}
@@ -80,7 +81,7 @@ func (r *queryResolver) Messages(ctx context.Context) ([]*graphql.Message, error
 	return messages, nil
 }
 
-func (r *queryResolver) Message(ctx context.Context, input string) (*graphql.Message, error) {
+func (r *queryResolver) Message(ctx context.Context, input string) (*messaging.Message, error) {
 	req := GetMessageRequest{
 		Id: input,
 	}
@@ -91,7 +92,7 @@ func (r *queryResolver) Message(ctx context.Context, input string) (*graphql.Mes
 		return nil, errors.New("internal server error")
 	}
 
-	message := &graphql.Message{
+	message := &messaging.Message{
 		ID: resp.(GetMessageResponse).Message.ID,
 		Text: resp.(GetMessageResponse).Message.Text,
 	}

@@ -11,5 +11,5 @@ package api
 
 type MessageList struct {
 
-	Todos []Message `json:"todos,omitempty"`
+	Messages []Message `json:"messages,omitempty"`
 }

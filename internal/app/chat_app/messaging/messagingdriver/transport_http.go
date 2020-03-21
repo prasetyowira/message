@@ -57,7 +57,7 @@ func encodeCreateMessageHTTPResponse(ctx context.Context, w http.ResponseWriter,
 	resp := response.(CreateMessageResponse)
 
 	apiResponse := api.CreateMessageResponse{
-		Id: resp.Id,
+		Id: resp.ID,
 	}
 
 	return kitxhttp.JSONResponseEncoder(ctx, w, kitxhttp.WithStatusCode(apiResponse, http.StatusCreated))
@@ -69,7 +69,7 @@ func encodeListMessagesHTTPResponse(ctx context.Context, w http.ResponseWriter, 
 	apiResponse := api.MessageList{}
 
 	for _, todo := range resp.Messages {
-		apiResponse.Todos = append(apiResponse.Todos, api.Message{
+		apiResponse.Messages = append(apiResponse.Messages, api.Message{
 			Id:   todo.ID,
 			Text: todo.Text,
 		})

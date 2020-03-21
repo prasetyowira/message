@@ -2,11 +2,6 @@
 
 package graphql
 
-type Message struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-}
-
 type NewMessage struct {
 	Text string `json:"text"`
 }

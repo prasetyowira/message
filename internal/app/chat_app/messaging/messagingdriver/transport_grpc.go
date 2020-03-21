@@ -48,7 +48,7 @@ func encodeCreateMessageGRPCResponse(_ context.Context, response interface{}) (i
 	resp := response.(CreateMessageResponse)
 
 	return &messagingv1.CreateMessageResponse{
-		Id: resp.Id,
+		Id: resp.ID,
 	}, nil
 }
 

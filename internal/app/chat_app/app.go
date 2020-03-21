@@ -20,12 +20,13 @@ import (
 	kitxendpoint "github.com/sagikazarmark/kitx/endpoint"
 	kitxtransport "github.com/sagikazarmark/kitx/transport"
 	kitxgrpc "github.com/sagikazarmark/kitx/transport/grpc"
-	"google.golang.org/grpc"
 	kitxhttp "github.com/sagikazarmark/kitx/transport/http"
+	"google.golang.org/grpc"
 	watermilllog "logur.dev/integration/watermill"
 
 	messagingv1 "github.com/prasetyowira/message/.gen/api/proto/messaging/v1"
 	"github.com/prasetyowira/message/internal/app/chat_app/httpbin"
+	"github.com/prasetyowira/message/internal/app/chat_app/landing/playground"
 	"github.com/prasetyowira/message/internal/app/chat_app/landing/landingdriver"
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter"
@@ -122,6 +123,7 @@ func InitializeApp(
 	}
 
 	landingdriver.RegisterHTTPHandlers(httpRouter)
+	playground.RegisterHTTPHandlers(httpRouter)
 	httpRouter.PathPrefix("/httpbin").Handler(http.StripPrefix(
 		"/httpbin",
 		httpbin.MakeHTTPHandler(logger.WithFields(map[string]interface{}{"module": "httpbin"})),
