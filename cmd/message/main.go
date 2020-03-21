@@ -305,7 +305,7 @@ func main() {
 				appkiterrors.IsServiceError, // filter out service errors
 			)
 
-			chat_app.InitializeApp(httpRouter, grpcServer, publisher, config.App.Storage, db, logger, errorHandler)
+			chat_app.InitializeApp(httpRouter, grpcServer, publisher, subscriber, config.App.Storage, db, logger, errorHandler)
 
 			h, err := watermill.NewRouter(config.Watermill.RouterConfig, logger)
 			emperror.Panic(err)

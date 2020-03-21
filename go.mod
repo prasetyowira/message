@@ -19,6 +19,7 @@ require (
 	github.com/golang/protobuf v1.3.4
 	github.com/goph/idgen v0.4.0
 	github.com/gorilla/mux v1.7.4
+	github.com/gorilla/websocket v1.4.2
 	github.com/markbates/pkger v0.14.0
 	github.com/mccutchen/go-httpbin v0.0.0-20190116014521-c5cb2f4802fa
 	github.com/oklog/run v1.1.0

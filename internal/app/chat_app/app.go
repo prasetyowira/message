@@ -26,8 +26,8 @@ import (
 
 	messagingv1 "github.com/prasetyowira/message/.gen/api/proto/messaging/v1"
 	"github.com/prasetyowira/message/internal/app/chat_app/httpbin"
-	"github.com/prasetyowira/message/internal/app/chat_app/landing/playground"
 	"github.com/prasetyowira/message/internal/app/chat_app/landing/landingdriver"
+	"github.com/prasetyowira/message/internal/app/chat_app/landing/playground"
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging"
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter"
 	"github.com/prasetyowira/message/internal/app/chat_app/messaging/messagingadapter/ent"
@@ -43,6 +43,7 @@ func InitializeApp(
 	httpRouter *mux.Router,
 	grpcServer *grpc.Server,
 	publisher message.Publisher,
+	subscriber message.Subscriber,
 	storage string,
 	db *sql.DB,
 	logger Logger,
@@ -124,6 +125,7 @@ func InitializeApp(
 
 	landingdriver.RegisterHTTPHandlers(httpRouter)
 	playground.RegisterHTTPHandlers(httpRouter)
+	messagingdriver.RegisterWebSocketHandlers(httpRouter, subscriber)
 	httpRouter.PathPrefix("/httpbin").Handler(http.StripPrefix(
 		"/httpbin",
 		httpbin.MakeHTTPHandler(logger.WithFields(map[string]interface{}{"module": "httpbin"})),

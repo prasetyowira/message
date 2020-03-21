@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+<pre id="message"></pre>
+<script type="text/javascript">
+    (function() {
+        var data = document.getElementById("message");
+        var conn = new WebSocket("ws://" + document.location.host + "/ws");
+        conn.onclose = function(evt) {
+            data.textContent = 'Connection closed';
+        };
+        conn.onmessage = function(evt) {
+            console.log('new message');
+            console.log(evt.data);
+            var messageData = JSON.parse(evt.data);
+            data.textContent = "ID: " + messageData.ID + "\nMessage: " + messageData.Text;
+        }
+    })();
+</script>
+</body>
+</html>
