@@ -4,6 +4,8 @@ info:
   title: Messaging API
   version: 1.0.0
 servers:
+- url: http://localhost:8000/
+- url: http://dockerhost:8000/
 - url: https://messaging.api/
 - url: http://messaging.api/
 paths:
@@ -11,12 +13,12 @@ paths:
     get:
       operationId: listMessages
       responses:
-        "201":
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/MessageList'
-          description: created
+          description: successful operation
         "500":
           content:
             application/json:

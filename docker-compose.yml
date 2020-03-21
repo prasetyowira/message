@@ -13,3 +13,14 @@ services:
     dockerhost:
         image: qoomon/docker-host:2.3.0
         cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+
+    doc:
+        image: swaggerapi/swagger-ui
+        environment:
+            SWAGGER_JSON: /messaging/api/openapi.yaml
+        ports:
+            - 127.0.0.1:81:8080
+        volumes:
+            - ./.gen/api/openapi/messaging:/messaging
+        depends_on:
+            - dockerhost
