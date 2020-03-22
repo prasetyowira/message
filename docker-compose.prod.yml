@@ -37,5 +37,4 @@ services:
             - db
         volumes:
             - ./config.toml.dist:/config/config.toml
-        command: ["/wait-for-db.sh", "db:3306", "--", "/usr/local/bin/message --telemetry-addr :10000 --http-addr :8000 --grpc-addr :8001"]
-#        command: ["sleep", "100s"]
+        command: ["/wait-for-db.sh", "db:3306", "--timeout=0", "--", "message", "--telemetry-addr", ":10000", "--http-addr", ":8000", "--grpc-addr", ":8001"]
