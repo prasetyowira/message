@@ -29,7 +29,7 @@ grpcAddr = ":8001"
 storage = "database"
 
 [database]
-host = "dockerhost"
+host = "db"
 port = 3306
 user = "root"
 pass = "root"
