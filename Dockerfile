@@ -14,6 +14,7 @@ COPY go.* /workspace/
 RUN go mod download
 
 COPY . /workspace
+COPY ./config.toml.dist /workspace/.config.toml
 
 ARG BUILD_TARGET
 

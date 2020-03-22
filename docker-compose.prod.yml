@@ -1,0 +1,36 @@
+version: "3.1"
+
+services:
+    db:
+        image: mysql:5.6
+        command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_USER: "app_user"
+            MYSQL_PASSWORD: "password"
+            MYSQL_DATABASE: message_app
+
+    dockerhost:
+        image: qoomon/docker-host:2.3.0
+        cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+
+    doc:
+        image: swaggerapi/swagger-ui
+        environment:
+            SWAGGER_JSON: /messaging/api/openapi.yaml
+        ports:
+            - 127.0.0.1:81:8080
+        volumes:
+            - ./.gen/api/openapi/messaging:/messaging
+        depends_on:
+            - dockerhost
+
+    app:
+        image: docker.pkg.github.com/prasetyowira/message/message:latest
+        env_file: .env.dist
+        ports:
+            - 127.0.0.1:8000:8000
+            - 127.0.0.1:8001:8001
+            - 127.0.0.1:10000:10000
+        depends_on:
+            - db
