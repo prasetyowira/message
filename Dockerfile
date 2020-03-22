@@ -50,6 +50,7 @@ RUN if [[ "${BUILD_TARGET}" == "debug" ]]; then apk add --update --no-cache libc
 COPY --from=builder /build/* /usr/local/bin/
 COPY --from=builder /workspace/config.toml /usr/local/bin/
 COPY --from=builder /workspace/wait-for-db.sh /wait-for-db.sh
+RUN chmod 555 /wait-for-db.sh
 
 ENV APP_CONFIG_DIR=/config.toml
 
