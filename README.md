@@ -77,6 +77,8 @@ http://127.0.0.1:8001
 ```console
 ./api/proto/messaging/v1
 ```
+if you run with bloomRPC, make sure the import path is
+```{project_dir}/api/proto```
 
 
 ### Testing

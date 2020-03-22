@@ -14,11 +14,9 @@ COPY go.* /workspace/
 RUN go mod download
 
 COPY . /workspace
-RUN ls -la
-COPY ./config.toml.dist ./config.toml
-COPY ./.env.dist ./.env.dist
-COPY ./.env.dist ./.env
-RUN ls -la
+COPY ./config.toml.dist /workspace/config.toml
+COPY ./.env.dist /workspace/.env.dist
+COPY ./.env.dist /workspace/.env
 
 ARG BUILD_TARGET
 
