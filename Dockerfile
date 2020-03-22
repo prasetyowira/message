@@ -47,6 +47,7 @@ ARG BUILD_TARGET
 RUN if [[ "${BUILD_TARGET}" == "debug" ]]; then apk add --update --no-cache libc6-compat; fi
 
 COPY --from=builder /build/* /usr/local/bin/
+COPY --from=builder /workspace/config.toml /usr/local/bin/
 
 EXPOSE 8000 8001 10000
 CMD ["message", "--telemetry-addr", ":10000", "--http-addr", ":8000", "--grpc-addr", ":8001"]
