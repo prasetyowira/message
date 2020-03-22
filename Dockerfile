@@ -15,8 +15,8 @@ RUN go mod download
 
 COPY . /workspace
 COPY ./config.toml.dist /workspace/config.toml
-COPY ./.env.dist /workspace/.env.dist
-COPY ./.env.dist /workspace/.env
+#COPY ./.env.dist /workspace/.env.dist
+#COPY ./.env.dist /workspace/.env
 
 ARG BUILD_TARGET
 
