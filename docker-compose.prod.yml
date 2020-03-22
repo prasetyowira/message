@@ -27,10 +27,15 @@ services:
 
     app:
         image: docker.pkg.github.com/prasetyowira/message/message:latest
-        env_file: .env.dist
+        environment:
+            APP_CONFIG_DIR: /config
         ports:
             - 127.0.0.1:8000:8000
             - 127.0.0.1:8001:8001
             - 127.0.0.1:10000:10000
         depends_on:
             - db
+        volumes:
+            - ./config.toml:/config/config.toml
+        command: ["/wait-for-db.sh", "dockerhost:3306", "--", "message", "--telemetry-addr", ":10000", "--http-addr", ":8000", "--grpc-addr", ":8001"]
+#        command: ["sleep", "100s"]

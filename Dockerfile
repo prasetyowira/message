@@ -15,6 +15,7 @@ RUN go mod download
 
 COPY . /workspace
 COPY ./config.toml.dist /workspace/config.toml
+COPY ./wait-for-db.sh /workspace/wait-for-db.sh
 #COPY ./.env.dist /workspace/.env.dist
 #COPY ./.env.dist /workspace/.env
 
@@ -48,7 +49,7 @@ RUN if [[ "${BUILD_TARGET}" == "debug" ]]; then apk add --update --no-cache libc
 
 COPY --from=builder /build/* /usr/local/bin/
 COPY --from=builder /workspace/config.toml /usr/local/bin/
-COPY --from=builder /workspace/config.toml /
+COPY --from=builder /workspace/wait-for-db.sh /wait-for-db.sh
 
 ENV APP_CONFIG_DIR=/config.toml
 
