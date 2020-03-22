@@ -48,6 +48,9 @@ RUN if [[ "${BUILD_TARGET}" == "debug" ]]; then apk add --update --no-cache libc
 
 COPY --from=builder /build/* /usr/local/bin/
 COPY --from=builder /workspace/config.toml /usr/local/bin/
+COPY --from=builder /workspace/config.toml /
+
+ENV APP_CONFIG_DIR=/config.toml
 
 EXPOSE 8000 8001 10000
 CMD ["message", "--telemetry-addr", ":10000", "--http-addr", ":8000", "--grpc-addr", ":8001"]
