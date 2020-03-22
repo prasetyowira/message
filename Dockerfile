@@ -6,7 +6,6 @@ ENV GOFLAGS="-mod=readonly"
 RUN apk add --update --no-cache ca-certificates make git curl mercurial bzr
 
 RUN mkdir -p /workspace
-RUN ls -la
 WORKDIR /workspace
 
 ARG GOPROXY
@@ -17,9 +16,9 @@ RUN ls -la
 
 COPY . /workspace
 RUN ls -la
-COPY config.toml.dist /workspace/config.toml
-COPY .env.dist /workspace/.env.dist
-COPY .env.dist /workspace/.env
+COPY /workspace/config.toml.dist /workspace/config.toml
+COPY /workspace/.env.dist /workspace/.env.dist
+COPY /workspace/.env.dist /workspace/.env
 
 ARG BUILD_TARGET
 

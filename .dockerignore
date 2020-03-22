@@ -9,4 +9,6 @@
 !pkg/
 !static/
 !Makefile
+!.env.dist
+!config.toml.dist
 **/pkged.go
