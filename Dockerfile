@@ -12,8 +12,10 @@ ARG GOPROXY
 
 COPY go.* /workspace/
 RUN go mod download
+RUN ls -la
 
 COPY . /workspace
+RUN ls -la
 COPY /workspace/config.toml.dist /workspace/config.toml
 
 ARG BUILD_TARGET
